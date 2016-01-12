@@ -1,6 +1,13 @@
+%define base_release_version 7
+%define full_release_version 7
+%define dist_release_version 7
+%define upstream_rel 7.2
+%define centos_rel 2.1511
+%define dist .el%{dist_release_version}.centos
+
 Name:           centos-repo
-Version:        7.2
-Release:        1
+Version:        %{upstream_rel}
+Release:        2
 Summary:        Base and Update Packages for Enterprise Linux repository
 
 Group:          System Environment/Base
@@ -15,9 +22,9 @@ Source5:        CentOS-Sources.repo
 Source6:        CentOS-Vault.repo
 Source7:        EULA
 Source8:        GPL
-Source9:        RPM-GPG-KEY-CentOS-7
-Source10:       RPM-GPG-KEY-CentOS-Debug-7
-Source11:       RPM-GPG-KEY-CentOS-Testing-7
+Source9:        RPM-GPG-KEY-CentOS-%{base_release_version}
+Source10:       RPM-GPG-KEY-CentOS-Debug-%{base_release_version}
+Source11:       RPM-GPG-KEY-CentOS-Testing-%{base_release_version}
 
 BuildArch:     noarch
 
@@ -93,5 +100,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jan 12 2016 John Siegrist <john@complects.com> - 7.2-2
+- Added missing definition needed for proper dist macro configuration
+
 * Wed Dec 30 2015 John Siegrist <john@complects.com> - 7.2-1
 - Initial version derived from the centos-release spec
